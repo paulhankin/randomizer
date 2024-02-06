@@ -44,7 +44,8 @@ func rgb(r, g, b int) color.NRGBA {
 func main() {
 	rand.Seed(time.Now().UnixNano())
 	go func() {
-		w := app.NewWindow(app.MaxSize(unit.Px(300), unit.Px(200)), app.Title("Paul's randomizer"))
+		SX, SY := unit.Px(300), unit.Px(200)
+		w := app.NewWindow(app.MaxSize(SX, SY), app.MinSize(SX, SY), app.Size(SX, SY), app.Title("Paul's randomizer"))
 		state := &State{
 			now:       StateOne{bg: rgb(0, 0, 0), fg: rgb(255, 255, 255), msg: "click"},
 			clickTime: time.Now().Add(-100 * time.Second),
